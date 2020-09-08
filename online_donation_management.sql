@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2020 at 04:42 PM
+-- Generation Time: Sep 08, 2020 at 04:28 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `online_donation_management`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_register`
+--
+
+CREATE TABLE `admin_register` (
+  `id` int(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin_register`
+--
+
+INSERT INTO `admin_register` (`id`, `username`, `email`, `password`) VALUES
+(1, 'Nahid', 'example@gmailr.com', '1234'),
+(2, 'faninenas', 'vugu@mailinator.com', 'Pa$$w0rd!'),
+(3, 'tyzyza', 'fywezovudi@mailinator.com', 'Pa$$w0rd!'),
+(4, 'vipose', 'ronupar@mailinator.com', 'Pa$$w0rd!');
 
 -- --------------------------------------------------------
 
@@ -81,7 +104,9 @@ INSERT INTO `trans_history` (`id`, `amount`, `cus_campign`, `cus_name`, `cus_ema
 (13, 113, '', '', '', 0, '2020-08-28 18:17:26.000000', 'SSLCZ_5f48f5bdcb91c', 'BKASH-BKash'),
 (14, 10, '', '', '', 0, '2020-08-28 18:23:31.000000', 'SSLCZ_5f48f72a038d0', 'BKASH-BKash'),
 (15, 1000, '', '', '', 0, '2020-08-28 18:53:20.000000', 'SSLCZ_5f48fe269bb96', 'BKASH-BKash'),
-(16, 100, '', '', '', 0, '2020-08-28 18:55:08.000000', 'SSLCZ_5f48fe932ee58', 'BKASH-BKash');
+(16, 100, '', '', '', 0, '2020-08-28 18:55:08.000000', 'SSLCZ_5f48fe932ee58', 'BKASH-BKash'),
+(17, 5000, '', '', '', 0, '2020-08-29 21:47:02.000000', 'SSLCZ_5f4a78589d7c4', 'BKASH-BKash'),
+(18, 100, '', '', '', 0, '2020-09-03 21:27:07.000000', 'SSLCZ_5f510b212a814', 'BKASH-BKash');
 
 -- --------------------------------------------------------
 
@@ -110,6 +135,12 @@ INSERT INTO `volunteer` (`id`, `name`, `email`, `msg`) VALUES
 --
 
 --
+-- Indexes for table `admin_register`
+--
+ALTER TABLE `admin_register`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contact`
 --
 ALTER TABLE `contact`
@@ -132,6 +163,12 @@ ALTER TABLE `volunteer`
 --
 
 --
+-- AUTO_INCREMENT for table `admin_register`
+--
+ALTER TABLE `admin_register`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
@@ -141,7 +178,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `trans_history`
 --
 ALTER TABLE `trans_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `volunteer`
