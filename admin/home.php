@@ -8,7 +8,7 @@ include('includes/navbar.php');
   <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Admin Data</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Data</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -18,26 +18,22 @@ include('includes/navbar.php');
         <div class="modal-body">
 
             <div class="form-group">
-                <label> Username </label>
-                <input type="text" name="username" class="form-control" placeholder="Enter Username">
+                <label> Title </label>
+                <input type="text" name="title" class="form-control" placeholder="Title Goes Here">
             </div>
             <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Enter Email">
+                <label>SubTitle</label>
+                <input type="text" name="subtitle" class="form-control" placeholder="Sub-Title Goes Here">
             </div>
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Enter Password">
-            </div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm Password">
+                <label>Button</label>
+                <input type="text" name="hero_btn" class="form-control" placeholder="Button Name Here">
             </div>
         
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="registerbtn" class="btn btn-primary">Save</button>
+            <button type="submit" name="hero_save" class="btn btn-primary">Save</button>
         </div>
       </form>
 
@@ -51,16 +47,16 @@ include('includes/navbar.php');
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Admin Profile 
+    <h6 class="m-0 font-weight-bold text-primary">Hero Section
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addadminprofile">
-              Add Admin Profile 
+              Add New Data
             </button>
     </h6>
   </div>
 
   <div class="card-body">
 
-    <?php
+  	<?php
        if(isset($_SESSION['success']) && ($_SESSION['success']) !=''){
           echo '<h2 class="bg-primary text-white">'.$_SESSION['success'].'</h2>';
           unset($_SESSION['success']);
@@ -72,21 +68,20 @@ include('includes/navbar.php');
        }
     ?>
 
-
     <div class="table-responsive">
 
-      <?php
-          $query ="SELECT * FROM admin_register";
+    <?php
+          $query ="SELECT * FROM hero";
           $query_run = mysqli_query($connection, $query);
-      ?>
+    ?>
 
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>ID </th>
-            <th>Username </th>
-            <th>Email </th>
-            <th>Password</th>
+            <th>ID</th>
+            <th>Title </th>
+            <th>SubTitle </th>
+            <th>Button </th>
             <th>EDIT </th>
             <th>DELETE </th>
           </tr>
@@ -99,44 +94,41 @@ include('includes/navbar.php');
 
             while ($row = mysqli_fetch_assoc($query_run))
             {
-              ?>   
-          <tr>
+        ?>  
+        <tr>
             <td> <?php echo $row['id']; ?> </td>
-            <td> <?php echo $row['username']; ?> </td>
-            <td> <?php echo $row['email']; ?> </td>
-            <td> <?php echo $row['password']; ?> </td>
+            <td> <?php echo $row['title']; ?> </td>
+            <td> <?php echo $row['subtitle']; ?> </td>
+            <td> <?php echo $row['button']; ?> </td>
             <td>
-                <form action="register_edit.php" method="post">
-                    <input type="hidden" name="edit_id" value="<?php echo $row['id'];?>">
-                    <button  type="submit" name="edit_btn" class="btn btn-success"> EDIT</button>
+                <form action="hero_edit.php" method="post">
+                    <input type="hidden" name="edit_hero_id" value="<?php echo $row['id'];?>">
+                    <button  type="submit" name="edit_hero_btn" class="btn btn-success"> EDIT</button>
                 </form>
             </td>
             <td>
-                <form action="code.php" method="post">
+                <form action="#" method="post">
                   <input type="hidden" name="delete_id" value=" <?php echo $row['id'];?> ">
-                  <button type="submit" name="delete_btn" class="btn btn-danger"> DELETE</button>
+                  <button type="submit" name="delete_hero_btn" class="btn btn-danger"> DELETE</button>
                 </form>
             </td>
-          </tr>
+        </tr>
 
-          <?php
+      <?php
         }
           }
             else{
               echo "No Record Found";
             }
-          ?>
-        
+      ?>
         </tbody>
       </table>
-
     </div>
   </div>
 </div>
 
 </div>
 <!-- /.container-fluid -->
-
 
 <?php
 include('includes/scripts.php');

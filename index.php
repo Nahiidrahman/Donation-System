@@ -73,6 +73,7 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])){
 	</section>
 
 	<!-- Hero section END-->
+	
 
 	<!--Our major causes Section-->
 
