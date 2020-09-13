@@ -64,11 +64,25 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])){
 
 	<section id="hero">
 		<div class="hero container">
-			<div>
-				<h1>YOUR SMALL EFFORTS MAKE<span></span></h1>
-				<h1>BIG CHANGE.<span></span></h1>
-				<a href="donate.php" type="button" class="cta">Donate Now</a>
-			</div>
+			<?php
+					include('admin/database/DBconfig.php');
+					$query = "SELECT * FROM hero ";
+					$query_run = mysqli_query($connection, $query);
+						if(mysqli_num_rows($query_run) > 0){
+							foreach ($query_run as $row) {
+			?>
+				<div>
+					<h1><?php echo $row['title']; ?><span></span></h1>
+					<h1> <?php echo $row['subtitle']; ?><span></span></h1>
+					<a href="donate.php" type="button" class="cta"> <?php echo $row['button']; ?> </a>
+				</div>
+		<?php
+						}
+						}
+						else{
+							echo "No Record Found";
+						}
+		?>	
 		</div>
 	</section>
 

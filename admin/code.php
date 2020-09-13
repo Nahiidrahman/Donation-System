@@ -129,7 +129,7 @@ if (isset($_POST['hero_save']))
 
     if($query_run)
     {
-        $_SESSION['success'] = "Your Data is Inserted";
+        $_SESSION['success'] = "Your Data is Stored";
         header('Location: home.php');
     }
     else
@@ -138,6 +138,52 @@ if (isset($_POST['hero_save']))
         header('Location: home.php');
     }
 }
+
+/*Update hero data*/
+if (isset($_POST['hero_updatebtn']))
+{
+    $id = $_POST['edit_hero_id'];
+    $title = $_POST['edit_title'];
+    $subtitle = $_POST['edit_subtitle'];
+    $button = $_POST['edit_btnname'];
+
+    $query = "UPDATE hero SET title='$title', subtitle='$subtitle', button='$button' WHERE id='$id' ";
+    $query_run = mysqli_query($connection, $query);
+
+    if($query_run)
+    {
+        $_SESSION['success'] = "Your Data is Updated";
+        header('Location: home.php');
+    }
+    else
+    {
+        $_SESSION['status'] = "Your Data is Not Updated";
+        header('Location: home.php');
+    }
+}
+
+/*Delete Hero data*/
+
+if (isset($_POST['delete_hero_btn']))
+{
+    $id = $_POST['delete_hero_id'];
+    $query = "DELETE FROM hero WHERE id='$id' ";
+    $query_run = mysqli_query($connection, $query);
+
+    if($query_run)
+    {
+        $_SESSION['success'] = "Your Data is Deleted";
+        header('Location: home.php');
+    }
+    else
+    {
+        $_SESSION['status'] = "Your Data is Not Deleted";
+        header('Location: home.php');
+    }
+
+}
+
+
 
 
 ?>

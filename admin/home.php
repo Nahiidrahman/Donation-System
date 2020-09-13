@@ -107,8 +107,8 @@ include('includes/navbar.php');
                 </form>
             </td>
             <td>
-                <form action="#" method="post">
-                  <input type="hidden" name="delete_id" value=" <?php echo $row['id'];?> ">
+                <form action="code.php" method="post">
+                  <input type="hidden" name="delete_hero_id" value=" <?php echo $row['id'];?> ">
                   <button type="submit" name="delete_hero_btn" class="btn btn-danger"> DELETE</button>
                 </form>
             </td>
