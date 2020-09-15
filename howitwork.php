@@ -443,7 +443,7 @@ p{
 						<li><a href="#" data-after="CAUSES">CAUSES</a></li>
 						<li><a href="gallery.php" data-after="GALLERY">GALLERY</a></li>
 						<li><a href="howitwork.php" data-after="HOW IT WORKS?">HOW IT WORKS?</a></li>
-						<li><a href="#" data-after="BLOG">BLOG</a></li>
+						<li><a href="blog.php" data-after="BLOG">BLOG</a></li>
 						<li><a href="contact.php" data-after="CONTACT">CONTACT</a></li>
 					</ul>
 				</div>

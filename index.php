@@ -47,7 +47,7 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])){
 						<li><a href="#" data-after="CAUSES">CAUSES</a></li>
 						<li><a href="gallery.php" data-after="GALLERY">GALLERY</a></li>
 						<li><a href="howitwork.php" data-after="HOW IT WORKS?">HOW IT WORKS?</a></li>
-						<li><a href="#" data-after="BLOG">BLOG</a></li>
+						<li><a href="blog.php" data-after="BLOG">BLOG</a></li>
 						<li><a href="contact.php" data-after="CONTACT">CONTACT</a></li>
 					</ul>
 				</div>
@@ -74,7 +74,13 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])){
 				<div>
 					<h1><?php echo $row['title']; ?><span></span></h1>
 					<h1> <?php echo $row['subtitle']; ?><span></span></h1>
-					<a href="donate.php" type="button" class="cta"> <?php echo $row['button']; ?> </a>
+					<a href="donate.php" type="button" class="cta"> <?php echo $row['button']; ?> 
+
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-reply" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					  <path fill-rule="evenodd" d="M9.502 5.013a.144.144 0 0 0-.202.134V6.3a.5.5 0 0 1-.5.5c-.667 0-2.013.005-3.3.822-.984.624-1.99 1.76-2.595 3.876C3.925 10.515 5.09 9.982 6.11 9.7a8.741 8.741 0 0 1 1.921-.306 7.403 7.403 0 0 1 .798.008h.013l.005.001h.001L8.8 9.9l.05-.498a.5.5 0 0 1 .45.498v1.153c0 .108.11.176.202.134l3.984-2.933a.494.494 0 0 1 .042-.028.147.147 0 0 0 0-.252.494.494 0 0 1-.042-.028L9.502 5.013zM8.3 10.386a7.745 7.745 0 0 0-1.923.277c-1.326.368-2.896 1.201-3.94 3.08a.5.5 0 0 1-.933-.305c.464-3.71 1.886-5.662 3.46-6.66 1.245-.79 2.527-.942 3.336-.971v-.66a1.144 1.144 0 0 1 1.767-.96l3.994 2.94a1.147 1.147 0 0 1 0 1.946l-3.994 2.94a1.144 1.144 0 0 1-1.767-.96v-.667z"/>
+					</svg>
+
+					</a>
 				</div>
 		<?php
 						}
@@ -148,6 +154,7 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])){
 				<h1 class="section-title">Feat<span>u</span>red ca<span>u</span>ses</h1>
 				<p>Creepeth called face upon face yielding midst is after moveth</p>
 			</div>
+
 			<div class="featured-bottom">
 				<div class="featured-item">
 					<div class="img-box">
@@ -155,18 +162,20 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])){
 						<h1>Education for child</h1>
 						<p>Be tree their face won't appear day waters moved fourth in they're divide don't a you were man face god.</p>
 						<h4>Raised: 1000Tk</h4> <h4 class="goal-green">Goal: 5000Tk</h4>
-						<a href="#" type="button" class="cta">Donate</a>
+						<a href="donate.php" type="button" class="cta">Donate</a>
 					</div>
 				</div>
+
 				<div class="featured-item">
 					<div class="img-box">
 						<img src="img/foood.jpg">
 						<h1>Food for hungry people</h1>
 						<p>Be tree their face won't appear day waters moved fourth in they're divide don't a you were man face god.</p>
 						<h4>Raised: 1000Tk</h4> <h4 class="goal-green">Goal: 5000Tk</h4>
-						<a href="#" type="button" class="cta">Donate</a>
+						<a href="donate.php" type="button" class="cta">Donate</a>
 					</div>
 				</div>
+				
 				<div class="featured-item">
 					<div class="img-box">
 						<img src="img/cloth2.jpg">
@@ -174,7 +183,7 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])){
 						<p>Be tree their face won't appear day waters moved fourth in they're divide don't a you were man face god.</p>
 						<h4>Raised: 1000Tk</h4>
 						<h4 class="goal-green">Goal: 5000Tk</h4>
-						<a href="#" type="button" class="cta">Donate</a>
+						<a href="donate.php" type="button" class="cta">Donate</a>
 					</div>
 				</div>
 			</div>

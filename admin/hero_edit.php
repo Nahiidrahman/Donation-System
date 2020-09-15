@@ -63,7 +63,6 @@ if(isset($_POST['edit_hero_btn']))
 </div>
 <!-- /.container-fluid -->
 
-
 <?php
 include('includes/scripts.php');
 include('includes/footer.php');
