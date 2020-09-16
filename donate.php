@@ -1,27 +1,3 @@
-<!-- 
-<?php
-try {
-	$db = new mysqli("localhost", "root", "", "online_donation_management");
-
-} catch (Exception $exc) {
-	echo $exc->getTraceAsString();
-}
-
-if(isset($_POST['campign']) && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['phone'])){
-
-	$campign = $_POST['campign'];
-	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$phone = $_POST['phone'];
-
-	if ($is_insert == TRUE) {
-		echo ' <script> alert("success! Wait for you get email"); window.location="index.php" </script> ';
-		exit();
-	}
-}
-
-?> -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -402,7 +378,15 @@ p{
 	<section id="donate">
 		<div class="donate donate-container">
 
-		<form method="post" action="payment.php?amount=<?php echo $amount?>,campign=<?php echo $campign?>,name=<?php echo $name?>,email=<?php echo $email?>,phone=<?php echo $phone?>">
+		<form method="POST" action="payment.php">
+
+			<input type="hidden" name="amount" value="<?php echo $amount?>">
+			<input type="hidden" name="campign" value="<?php echo $campign?>">
+			<input type="hidden" name="name" value="<?php echo $name?>">
+			<input type="hidden" name="email" value="<?php echo $email?>">
+			<input type="hidden" name="phone" value="<?php echo $phone?>">
+ 
+
 			<div class="donate-form">
 				<h1>Donation Information</h1>
 				<div>

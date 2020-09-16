@@ -158,33 +158,74 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])){
 			<div class="featured-bottom">
 				<div class="featured-item">
 					<div class="img-box">
-						<img src="img/education.jpg">
-						<h1>Education for child</h1>
-						<p>Be tree their face won't appear day waters moved fourth in they're divide don't a you were man face god.</p>
-						<h4>Raised: 1000Tk</h4> <h4 class="goal-green">Goal: 5000Tk</h4>
+						<?php
+							include('admin/database/DBconfig.php');
+							$query = "SELECT * FROM featured_causes WHERE id='1' ";
+							$query_run = mysqli_query($connection, $query);
+								if(mysqli_num_rows($query_run) > 0){
+									foreach ($query_run as $row) {
+						?>
+						<img src="admin/upload/<?php echo $row['image'];?>">
+						<h1> <?php echo $row['title']; ?> </h1>
+						<p> <?php echo $row['description']; ?> </p>
+						<h4>Raised: <?php echo $row['raised'];?>TK</h4> <h4 class="goal-green">Goal: <?php echo $row['goal']; ?>TK</h4>
 						<a href="donate.php" type="button" class="cta">Donate</a>
 					</div>
+					<?php
+						}
+						}
+						else{
+							echo "No Record Found";
+						}
+					?>	
 				</div>
 
 				<div class="featured-item">
 					<div class="img-box">
-						<img src="img/foood.jpg">
-						<h1>Food for hungry people</h1>
-						<p>Be tree their face won't appear day waters moved fourth in they're divide don't a you were man face god.</p>
-						<h4>Raised: 1000Tk</h4> <h4 class="goal-green">Goal: 5000Tk</h4>
+						<?php
+							include('admin/database/DBconfig.php');
+							$query = "SELECT * FROM featured_causes WHERE id='4' ";
+							$query_run = mysqli_query($connection, $query);
+								if(mysqli_num_rows($query_run) > 0){
+									foreach ($query_run as $row) {
+						?>
+						<img src="admin/upload/<?php echo $row['image'];?>">
+						<h1> <?php echo $row['title']; ?> </h1>
+						<p> <?php echo $row['description']; ?> </p>
+						<h4>Raised: <?php echo $row['raised'];?>TK</h4> <h4 class="goal-green">Goal: <?php echo $row['goal']; ?>TK</h4>
 						<a href="donate.php" type="button" class="cta">Donate</a>
 					</div>
+					<?php
+						}
+						}
+						else{
+							echo "No Record Found";
+						}
+					?>
 				</div>
 				
 				<div class="featured-item">
 					<div class="img-box">
-						<img src="img/cloth2.jpg">
-						<h1>Providing cloth people</h1>
-						<p>Be tree their face won't appear day waters moved fourth in they're divide don't a you were man face god.</p>
-						<h4>Raised: 1000Tk</h4>
-						<h4 class="goal-green">Goal: 5000Tk</h4>
+						<?php
+							include('admin/database/DBconfig.php');
+							$query = "SELECT * FROM featured_causes WHERE id='5' ";
+							$query_run = mysqli_query($connection, $query);
+								if(mysqli_num_rows($query_run) > 0){
+									foreach ($query_run as $row) {
+						?>
+						<img src="admin/upload/<?php echo $row['image'];?>">
+						<h1> <?php echo $row['title']; ?> </h1>
+						<p> <?php echo $row['description']; ?> </p>
+						<h4>Raised: <?php echo $row['raised'];?>TK</h4> <h4 class="goal-green">Goal: <?php echo $row['goal']; ?>TK</h4>
 						<a href="donate.php" type="button" class="cta">Donate</a>
 					</div>
+					<?php
+						}
+						}
+						else{
+							echo "No Record Found";
+						}
+					?>
 				</div>
 			</div>
 		</div>

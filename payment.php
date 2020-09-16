@@ -8,14 +8,20 @@ $post_data['total_amount'] = $_POST["amount"];
 $post_data['currency'] = "BDT";
 $post_data['tran_id'] = "SSLCZ_".uniqid();
 $post_data['success_url'] = "http://www.finalyearproject.com/FInalYearProject/success.php";
-$post_data['fail_url'] = "http://localhost/new_sslcz_gw/fail.php";
-$post_data['cancel_url'] = "http://localhost/new_sslcz_gw/cancel.php";
+$post_data['fail_url'] = "http://www.finalyearproject.com/FInalYearProject/payment.php";
+$post_data['cancel_url'] = "http://www.finalyearproject.com/FInalYearProject/donate.php";
 # $post_data['multi_card_name'] = "mastercard,visacard,amexcard";  # DISABLE TO DISPLAY ALL AVAILABLE
 
 # EMI INFO
 $post_data['emi_option'] = "1";
 $post_data['emi_max_inst_option'] = "9";
 $post_data['emi_selected_inst'] = "9";
+
+
+//
+//done ase
+//
+//save and try now
 
 # CUSTOMER INFORMATION
 $post_data['cus_campign'] = $_POST["campign"];

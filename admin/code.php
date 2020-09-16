@@ -236,17 +236,17 @@ if (isset($_POST['feature_updatebtn']))
 
         $feature_query = "SELECT * FROM featured_causes WHERE id='$edit_id' ";
         $feature_query_run = mysqli_query($connection, $feature_query);
-        foreach ($feature_query_run as $fa_row) {
-            if ($edit_image == NULL) {
-                $image_data = $fa_row['image'];
-            }
-            else{
-                if ($img_path = "upload/".$fa_row['image']) {
-                    unlink($img_path);
-                    $image_data = $edit_image;
+            foreach ($feature_query_run as $fa_row) {
+                if ($edit_image == NULL) {
+                    $image_data = $fa_row['image'];
+                }
+                else{
+                    if ($img_path = "upload/".$fa_row['image']) {
+                        unlink($img_path);
+                        $image_data = $edit_image;
+                    }
                 }
             }
-        }
 
         $query = "UPDATE featured_causes SET image='$image_data', title='$edit_title', description ='$edit_description', raised='$edit_raised', goal='$edit_goal' WHERE id='$edit_id' ";
         $query_run = mysqli_query($connection, $query);
@@ -254,14 +254,13 @@ if (isset($_POST['feature_updatebtn']))
         if($query_run)
         {
             if ($edit_image == NULL) {
-                $_SESSION['success'] = "Your Data is Updated";
+                $_SESSION['success'] = "Your Data is Updated with image";
                 header('Location: home.php');
             }
             else{
                 move_uploaded_file($_FILES["feature_image"]["tmp_name"], "upload/".$_FILES["feature_image"]["name"]);
                 $_SESSION['success'] = "Your Data is Updated";
-                header('Location: home.php');
-                
+                header('Location: home.php'); 
             }   
         }
         else
@@ -298,5 +297,117 @@ if (isset($_POST['delete_feature_btn']))
     }
 
 }
+
+/*Blog Home */
+
+if (isset($_POST['blogH_save']))
+{
+    $image = $_FILES["blogH_image"]['name'];
+    $title = $_POST['blogH_title'];
+    $description = $_POST['blogH_description'];
+
+    $validate_img_extension = $_FILES["blogH_image"]['type'] == "image/jpg" || $_FILES["blogH_image"]['type'] == "image/png" || 
+                              $_FILES["blogH_image"]['type'] == "image/jpeg" ;
+
+    if ($validate_img_extension) {
+
+        $query = "INSERT INTO blog_home (image,title,description) VALUES ('$image','$title','$description')";
+        $query_run = mysqli_query($connection, $query);
+
+            if($query_run)
+            {
+                move_uploaded_file($_FILES["blogH_image"]["tmp_name"], "upload/".$_FILES["blogH_image"]["name"]);
+                $_SESSION['success'] = "Your Data is Stored";
+                header('Location: blogHome.php');
+            }
+            else
+            {
+                $_SESSION['status'] = "Your Data is Not Stored";
+                header('Location: blogHome.php');
+            }
+    }
+    else{
+        $_SESSION['status'] = "Please Upload your correct image!(example: jpg,png,jpeg)";
+        header('Location: blogHome.php');
+    }
+}
+
+/*Update Featured causes*/
+if (isset($_POST['blogH_updatebtn']))
+{
+    $edit_id = $_POST['edit_blogH_id'];
+    $edit_image = $_FILES["blogH_image"]['name'];
+    $edit_title = $_POST['edit_blogH_title'];
+    $edit_description = $_POST['edit_blogH_description'];
+
+    $validate_img_extension = $_FILES["blogH_image"]['type'] == "image/jpg" || $_FILES["blogH_image"]['type'] == "image/png" || 
+                              $_FILES["blogH_image"]['type'] == "image/jpeg" ;
+
+    if ($validate_img_extension) {
+
+        $feature_query = "SELECT * FROM blog_home WHERE id='$edit_id' ";
+        $feature_query_run = mysqli_query($connection, $feature_query);
+            foreach ($feature_query_run as $fa_row) {
+                if ($edit_image == NULL) {
+                    $image_data = $fa_row['image'];
+                }
+                else{
+                    if ($img_path = "upload/".$fa_row['image']) {
+                        unlink($img_path);
+                        $image_data = $edit_image;
+                    }
+                }
+            }
+
+        $query = "UPDATE blog_home SET image='$image_data', title='$edit_title', description ='$edit_description' WHERE id='$edit_id' ";
+        $query_run = mysqli_query($connection, $query);
+
+        if($query_run)
+        {
+            if ($edit_image == NULL) {
+                $_SESSION['success'] = "Your Data is Updated with image";
+                header('Location: blogHome.php');
+            }
+            else{
+                move_uploaded_file($_FILES["blogH_image"]["tmp_name"], "upload/".$_FILES["blogH_image"]["name"]);
+                $_SESSION['success'] = "Your Data is Updated";
+                header('Location: blogHome.php'); 
+            }   
+        }
+        else
+        {
+            $_SESSION['status'] = "Your Data is Not Updated";
+            header('Location: blogHome.php');
+        }
+    }
+    else{
+        $_SESSION['status'] = "Please Upload your correct image!(example: jpg,png,jpeg)";
+        header('Location: blogHome.php');
+    }
+}
+
+/*Delete Featured  causes*/
+
+if (isset($_POST['delete_blogH_btn']))
+{
+    $id = $_POST['delete_blogH_id'];
+
+    $query = "DELETE FROM blog_home WHERE id='$id' ";
+    $query_run = mysqli_query($connection, $query);
+
+    if($query_run)
+    {
+        $_SESSION['success'] = "Your Data is Deleted";
+        header('Location: blogHome.php');
+    }
+    else
+    {
+        $_SESSION['status'] = "Your Data is Not Deleted";
+        header('Location: blogHome.php');
+    }
+
+}
+
+
 
 ?>

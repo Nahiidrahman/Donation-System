@@ -71,7 +71,19 @@ if($code == 200 && !( curl_errno($handle)))
 if($db-> connect_error){
 	die("connection failed".$db-> connect_error);
 }
-	$is_insert = $db->query("INSERT INTO trans_history (`amount`, `cus_campign`, `cus_name`, `cus_email`, `cus_phone`, `tran_date`, `tran_id`, `card_type`) VALUES ('$amount', '$cus_campign', '$cus_name', '$cus_email', '$cus_phone', '$tran_date', '$tran_id', '$card_type')");
+
+$amount = $amount;
+$cus_campign = $_POST["campign"];
+$cus_name = $_POST["name"];
+$cus_email = $_POST["email"];
+$cus_phone = $_POST["phone"];
+$tran_date = $tran_date;
+$tran_id = $tran_id;
+$card_type = $card_type;
+
+	$is_insert = $db->query("INSERT INTO trans_history (`amount`, `cus_campign`, `cus_name`, `cus_email`, `cus_phone`, `tran_date`, `tran_id`, `card_type`) VALUES (
+		'$amount', '$cus_campign', '$cus_name', '$cus_email', 
+		'$cus_phone', '$tran_date', '$tran_id', '$card_type')");
 
 	if ($is_insert == TRUE) {
 		echo ' <script> alert("Transaction Succeeded! Thanks For Your Donation."); window.location="donate.php" </script> ';
@@ -83,5 +95,3 @@ if($db-> connect_error){
 }
 
 ?>
-
-
